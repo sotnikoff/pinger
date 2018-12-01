@@ -9,8 +9,15 @@
 </p>
 
 <p>
+  <%= link_to 'Edit', edit_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' %>
+</p>
+
+<p>
   <%= link_to 'Ping', ping_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' %>
 </p>
 
+<%= paginate @pings %>
+
 <%= render partial: 'table', locals: { pings: @pings } %>
+
 <%= paginate @pings %>

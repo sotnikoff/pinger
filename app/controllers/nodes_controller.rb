@@ -35,7 +35,7 @@ class NodesController < ApplicationController
 
   def destroy
     @node.destroy
-    redirect_to decks_path, notice: 'Node destroyed'
+    redirect_to nodes_path, notice: 'Node destroyed'
   end
 
   def ping

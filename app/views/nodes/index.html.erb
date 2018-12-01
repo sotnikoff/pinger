@@ -4,31 +4,44 @@
     <i class="fa fa-plus" aria-hidden="true"></i> New Node
   <% end %>
 </p>
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= Node.human_attribute_name(:id) %></th>
-      <th><%= Node.human_attribute_name(:title) %></th>
-      <th><%= Node.human_attribute_name(:ip) %></th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @nodes.each do |node| %>
+<% if @nodes.present? %>
+  <table class="table">
+    <thead>
       <tr>
-        <td>
-          <%= link_to node.id, node_path(node) %>
-        </td>
-        <td>
-          <%= link_to node.title, node_path(node) %>
-        </td>
-        <td>
-          <%= node.ip %>
-        </td>
-        <td>
-          <%= link_to 'Ping', ping_node_path(node), class: 'btn btn-primary btn-sm', role: 'button' %>
-        </td>
+        <th><%= Node.human_attribute_name(:id) %></th>
+        <th><%= Node.human_attribute_name(:title) %></th>
+        <th><%= Node.human_attribute_name(:ip) %></th>
+        <th><%= Node.human_attribute_name(:check) %></th>
+        <th> </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @nodes.each do |node| %>
+        <tr>
+          <td>
+            <%= link_to node.id, node_path(node) %>
+          </td>
+          <td>
+            <%= link_to node.title, node_path(node) %>
+          </td>
+          <td>
+            <%= node.ip %>
+          </td>
+          <td>
+            <%= node.check ? 'Yes' : 'No' %>
+          </td>
+          <td>
+            <%= link_to 'Open', node_path(node), class: 'btn btn-primary btn-sm', role: 'button' %>
+            <%= link_to 'Ping', ping_node_path(node), class: 'btn btn-primary btn-sm', role: 'button' %>
+            <%= link_to 'Edit', edit_node_path(node), class: 'btn btn-primary btn-sm', role: 'button' %>
+            <%= link_to 'Destroy', node_path(node), class: 'btn btn-danger btn-sm', role: 'button', method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-center">
+    The list of nodes is empty
+  </p>
+<% end %>
