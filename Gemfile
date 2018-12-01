@@ -39,7 +39,10 @@ source 'https://rails-assets.org' do
 end
 
 gem 'devise'
+gem 'font-awesome-rails'
 gem 'kaminari'
+gem 'net-ping', '~> 1.7', '>= 1.7.8'
+gem 'pry-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -1,0 +1,13 @@
+<h1><%= @node.title %></h1>
+<h4><%= @node.ip %></h4>
+<p><%= @result %></p>
+
+<p>
+  <%= link_to 'Home', root_path %>
+</p>
+
+<p>
+  <%= link_to 'Ping again', ping_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' %>
+</p>
+
+<%= render partial: 'table', locals: { pings: @pings } %>

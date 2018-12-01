@@ -1,0 +1,27 @@
+ <%= form_for(node) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ip %>
+    <%= f.text_field :ip, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <%= f.check_box :check, class: 'form-check-input' %>
+      <%= f.label :check, class: 'form-check-label' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+ <% end %>

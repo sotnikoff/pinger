@@ -1,2 +1,4 @@
-<h1>Nodes#edit</h1>
-<p>Find me in app/views/nodes/edit.html.erb</p>
+<h1>Edit Node</h1>
+<p><%= link_to 'Home', root_path %></p>
+
+<%= render partial: 'form', locals: { node: @node } %>
