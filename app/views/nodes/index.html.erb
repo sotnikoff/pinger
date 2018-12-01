@@ -12,6 +12,7 @@
         <th><%= Node.human_attribute_name(:title) %></th>
         <th><%= Node.human_attribute_name(:ip) %></th>
         <th><%= Node.human_attribute_name(:check) %></th>
+        <th>Last result</th>
         <th> </th>
       </tr>
     </thead>
@@ -29,6 +30,9 @@
           </td>
           <td>
             <%= node.check ? 'Yes' : 'No' %>
+          </td>
+          <td>
+              <%= node.node_pings.first&.result ? 'Passed' : 'Failed' %>
           </td>
           <td>
             <%= link_to 'Open', node_path(node), class: 'btn btn-primary btn-sm', role: 'button' %>

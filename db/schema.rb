@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_100121) do
     t.boolean "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_node_pings_on_created_at"
     t.index ["node_id"], name: "index_node_pings_on_node_id"
   end
 
