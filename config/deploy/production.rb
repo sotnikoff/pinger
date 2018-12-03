@@ -1,7 +1,7 @@
 # Change these
 server '31.210.216.198', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:sotnikoff/pinger.git'
+set :repo_url,        'https://github.com/sotnikoff/pinger.git'
 set :application,     'pinger'
 set :user,            'lift'
 set :puma_threads,    [4, 16]
