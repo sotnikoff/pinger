@@ -6,7 +6,6 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/yarn'
-require 'capistrano/sidekiq'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 set :pty,  false
