@@ -16,6 +16,14 @@
   <%= link_to 'Ping', ping_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' %>
 </p>
 
+<p>
+  <% if params[:failed].present? %>
+    <%= link_to 'Show all pings', node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' %>
+  <% else %>
+    <%= link_to 'Show only failed', node_path(@node, failed: 1), class: 'btn btn-primary btn-sm', role: 'button' %>
+  <% end %>
+</p>
+
 <%= paginate @pings %>
 
 <%= render partial: 'table', locals: { pings: @pings } %>

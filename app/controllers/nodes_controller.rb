@@ -3,11 +3,15 @@ class NodesController < ApplicationController
   before_action :node, only: %i[show edit update destroy ping]
 
   def index
-    @nodes = Node.page.all
+    @nodes = Node.all
   end
 
   def show
-    @pings = @node.node_pings.page(params[:page]).per(30)
+    @pings = if params[:failed].present?
+               @node.node_pings.failed.page(params[:page]).per(30)
+             else
+               @node.node_pings.page(params[:page]).per(30)
+             end
   end
 
   def edit; end
