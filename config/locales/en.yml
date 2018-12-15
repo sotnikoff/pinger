@@ -36,3 +36,4 @@ en:
   time:
     formats:
       default: "%d/%m/%Y %H:%M:%S"
+      file: "%Y%m%d%H%M%S"
