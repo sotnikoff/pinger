@@ -1,17 +1,28 @@
 %h1= @node.title
+
 - if @node.description.present?
   %p= @node.description
+
 %p
-  = link_to 'Home', root_path
-%p
-  = link_to 'Edit', edit_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button'
-%p
-  = link_to 'Ping', ping_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button'
-%p
-  - if params[:failed].present?
-    = link_to 'Show all pings', node_path(@node), class: 'btn btn-primary btn-sm', role: 'button'
-  - else
-    = link_to 'Show only failed', node_path(@node, failed: 1), class: 'btn btn-primary btn-sm', role: 'button'
+  .btn-group{ role: 'group'}
+    = link_to root_path, class: 'btn btn-success btn-sm', role: 'button' do
+      %i.fa.fa-home
+      Home
+    = link_to edit_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' do
+      %i.fa.fa-pencil
+      Edit
+    = link_to ping_node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' do
+      %i.fa.fa-bell
+      Ping
+    - if params[:failed].present?
+      = link_to node_path(@node), class: 'btn btn-primary btn-sm', role: 'button' do
+        %i.fa.fa-list
+        Show all pings
+    - else
+      = link_to node_path(@node, failed: 1), class: 'btn btn-danger btn-sm', role: 'button' do
+        %i.fa.fa-times
+        Show only failed
+
 = paginate @pings
 = render partial: 'table', locals: { pings: @pings }
 = paginate @pings
