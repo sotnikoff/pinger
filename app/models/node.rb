@@ -1,4 +1,7 @@
 class Node < ApplicationRecord
+
+  include Discard::Model
+
   has_many :node_pings, dependent: :destroy
 
   def ping
@@ -7,4 +10,5 @@ class Node < ApplicationRecord
     NodePing.create(node: self, result: result)
     result
   end
+
 end

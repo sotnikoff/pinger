@@ -44,6 +44,7 @@ gem 'kaminari'
 gem 'net-ping', '~> 1.7', '>= 1.7.8'
 gem 'pry-rails'
 gem 'haml'
+gem 'discard'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

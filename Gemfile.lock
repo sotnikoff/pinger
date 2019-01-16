@@ -97,6 +97,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    discard (1.0.0)
+      activerecord (>= 4.2, < 6)
     erb2haml (0.1.5)
       html2haml
     erubi (1.7.1)
@@ -272,6 +274,7 @@ DEPENDENCIES
   capistrano3-puma
   coffee-rails (~> 4.2)
   devise
+  discard
   erb2haml
   font-awesome-rails
   haml

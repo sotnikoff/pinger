@@ -1,9 +1,10 @@
 class NodesController < ApplicationController
+
   before_action :authenticate_user!
   before_action :node, only: %i[show edit update destroy ping]
 
   def index
-    @nodes = Node.all
+    @nodes = Node.kept.all
   end
 
   def show
@@ -38,7 +39,7 @@ class NodesController < ApplicationController
   end
 
   def destroy
-    @node.destroy
+    @node.discard
     redirect_to nodes_path, notice: 'Node destroyed'
   end
 
@@ -50,10 +51,11 @@ class NodesController < ApplicationController
   private
 
   def node
-    @node = Node.find(params[:id])
+    @node = Node.kept.find(params[:id])
   end
 
   def node_params
     params.require(:node).permit(:title, :description, :check, :ip)
   end
+
 end

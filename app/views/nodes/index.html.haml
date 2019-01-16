@@ -27,10 +27,11 @@
           %td
             = node.node_pings.first&.result ? 'Passed' : 'Failed'
           %td
-            = link_to 'Open', node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
-            = link_to 'Ping', ping_node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
-            = link_to 'Edit', edit_node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
-            = link_to 'Destroy', node_path(node), class: 'btn btn-danger btn-sm', role: 'button', method: :delete
+            .btn-group
+              = link_to 'Open', node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
+              = link_to 'Ping', ping_node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
+              = link_to 'Edit', edit_node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
+              = link_to 'Destroy', node_path(node), class: 'btn btn-danger btn-sm', role: 'button', method: :delete
 - else
   %p.text-center
     The list of nodes is empty
