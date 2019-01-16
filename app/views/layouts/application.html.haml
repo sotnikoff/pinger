@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Pinger
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    #main.container
+      - if user_signed_in?
+        .row
+          .col-md.text-right
+            %p
+              = current_user.email
+              = link_to 'Log_out', destroy_user_session_path, method: :delete
+      - if notice || alert
+        .row
+          .col-md
+            - if notice
+              .alert.alert-primary{:role => "alert"}
+                = notice
+            - if alert
+              .alert.alert-danger{:role => "alert"}
+                = alert
+      .row
+        .col-md
+          = yield

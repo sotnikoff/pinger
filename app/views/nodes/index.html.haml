@@ -1,0 +1,36 @@
+%h1 Nodes
+%p
+  = link_to new_node_path, class: 'btn btn-success', role: 'button' do
+    %i.fa.fa-plus{"aria-hidden" => "true"}
+    New Node
+- if @nodes.present?
+  %table.table
+    %thead
+      %tr
+        %th= Node.human_attribute_name(:id)
+        %th= Node.human_attribute_name(:title)
+        %th= Node.human_attribute_name(:ip)
+        %th= Node.human_attribute_name(:check)
+        %th Last result
+        %th
+    %tbody
+      - @nodes.each do |node|
+        %tr
+          %td
+            = link_to node.id, node_path(node)
+          %td
+            = link_to node.title, node_path(node)
+          %td
+            = node.ip
+          %td
+            = node.check ? 'Yes' : 'No'
+          %td
+            = node.node_pings.first&.result ? 'Passed' : 'Failed'
+          %td
+            = link_to 'Open', node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
+            = link_to 'Ping', ping_node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
+            = link_to 'Edit', edit_node_path(node), class: 'btn btn-primary btn-sm', role: 'button'
+            = link_to 'Destroy', node_path(node), class: 'btn btn-danger btn-sm', role: 'button', method: :delete
+- else
+  %p.text-center
+    The list of nodes is empty

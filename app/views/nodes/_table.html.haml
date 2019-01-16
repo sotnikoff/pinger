@@ -1,0 +1,10 @@
+%table.table
+  %thead
+    %tr
+      %th= NodePing.human_attribute_name(:created_at)
+      %th= NodePing.human_attribute_name(:result)
+  %tbody
+    - pings.each do |ping|
+      %tr
+        %td= l(ping.created_at)
+        %td= ping.result ? 'Pass' : 'Failed'
