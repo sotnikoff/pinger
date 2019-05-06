@@ -1,5 +1,6 @@
-class NodesController < ApplicationController
+# frozen_string_literal: true
 
+class NodesController < ApplicationController
   before_action :authenticate_user!
   before_action :node, only: %i[show edit update destroy ping]
 
@@ -57,5 +58,4 @@ class NodesController < ApplicationController
   def node_params
     params.require(:node).permit(:title, :description, :check, :ip)
   end
-
 end

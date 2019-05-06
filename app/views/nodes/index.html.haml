@@ -11,7 +11,7 @@
         %th= Node.human_attribute_name(:title)
         %th= Node.human_attribute_name(:ip)
         %th= Node.human_attribute_name(:check)
-        %th Last result
+        %th= Node.human_attribute_name(:node_online)
         %th
     %tbody
       - @nodes.each do |node|
@@ -25,7 +25,7 @@
           %td
             = node.check ? 'Yes' : 'No'
           %td
-            = node.node_pings.first&.result ? 'Passed' : 'Failed'
+            = node.node_online? ? 'Yes' : 'No'
           %td
             .btn-group
               = link_to 'Open', node_path(node), class: 'btn btn-primary btn-sm', role: 'button'

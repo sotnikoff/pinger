@@ -1,5 +1,6 @@
-class NodePing < ApplicationRecord
+# frozen_string_literal: true
 
+class NodePing < ApplicationRecord
   belongs_to :node
 
   default_scope { order('created_at DESC') }
@@ -8,5 +9,4 @@ class NodePing < ApplicationRecord
     yesterday = Time.current - 1.day
     where(created_at: yesterday.beginning_of_day...yesterday.end_of_day)
   }
-
 end

@@ -1,0 +1,12 @@
+%h1= "Bad response from #{@node.title}"
+%h4= @node.ip
+
+%hr
+
+%h4 Last results
+%table
+  %tbody
+    - @node.node_pings.each do |ping|
+      %tr
+        %td= I18n.l(ping.created_at)
+        %td= ping.result ? 'Pass' : 'Failed'

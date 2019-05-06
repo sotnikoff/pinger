@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_161746) do
+ActiveRecord::Schema.define(version: 2019_05_06_142717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_161746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "discarded_at"
+    t.boolean "node_online", default: true
     t.index ["discarded_at"], name: "index_nodes_on_discarded_at"
   end
 
@@ -42,8 +43,8 @@ ActiveRecord::Schema.define(version: 2019_01_16_161746) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "receive_mails", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "node_pings", "nodes"
 end
