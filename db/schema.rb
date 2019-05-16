@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_142717) do
+ActiveRecord::Schema.define(version: 2019_05_16_121800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_142717) do
     t.boolean "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_attempts", default: 0
+    t.integer "successful_attempts", default: 0
     t.index ["created_at"], name: "index_node_pings_on_created_at"
     t.index ["node_id"], name: "index_node_pings_on_node_id"
   end

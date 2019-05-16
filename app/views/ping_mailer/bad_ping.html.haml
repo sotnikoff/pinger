@@ -7,6 +7,12 @@
 %table
   %tbody
     - @node_history.each do |ping|
-      %tr
+      %tr{style: "#{'color: red;' if !ping.result}"}
         %td= I18n.l(ping.created_at)
         %td= ping.result ? 'Pass' : 'Failed'
+        %td
+          - if ping.total_attempts.to_i.positive?
+            = "#{ping.successful_attempts}/#{ping.total_attempts}"
+            = "(#{(ping.successful_attempts.to_f / ping.total_attempts.to_f * 100).to_i}%)"
+          - else
+            N/A
